@@ -93,6 +93,28 @@ import UIKit
             indicatorView.layer.borderColor = newValue?.cgColor
         }
     }
+    /// The background view's border color.
+    @IBInspectable public var backgroundBorderColor: UIColor? {
+        get {
+            guard let color = normalSegmentViews.layer.borderColor else {
+                return nil
+            }
+            return UIColor(cgColor: color)
+        }
+        set {
+            normalSegmentViews.forEach { $0.layer.borderColor = newValue?.cgColor }
+        }
+    }
+
+    /// The background view's border width.
+    @IBInspectable public var backgroundBorderWidth: CGFloat {
+        get {
+            return normalSegmentViews.layer.borderWidth
+        }
+        set {
+            normalSegmentViews.forEach { $0.layer.borderWidth = newValue }
+        }
+    }
     
     /// The duration of the animation of an index change. Defaults to `0.3`.
     @IBInspectable public var animationDuration: TimeInterval = 0.3
@@ -134,7 +156,7 @@ import UIKit
     private let pointerInteractionViewsContainerView = UIView()
     
     private var initialIndicatorViewFrame: CGRect?
-
+    
     private var tapGestureRecognizer: UITapGestureRecognizer!
     private var panGestureRecognizer: UIPanGestureRecognizer!
     
@@ -270,7 +292,7 @@ import UIKit
             pointerInteractionViews[index].frame = frame
         }
     }
-
+    
     // MARK: Index Setting
     /// Sets the control's index.
     ///
@@ -333,6 +355,10 @@ import UIKit
                 panningDisabled = value
             case let .backgroundColor(value):
                 backgroundColor = value
+            case let .backgroundBorderColor(value):
+                backgroundBorderColor = value
+            case let .backgroundBorderWidth(value):
+                backgroundBorderWidth = value
             case let .cornerRadius(value):
                 cornerRadius = value
             case let .animationDuration(value):
@@ -352,9 +378,9 @@ import UIKit
                        animations: { () -> Void in
                         self.selectedSegmentViewsContainerView.alpha = isVisible ? 1.0 : 0.0
                         self.indicatorView.alpha = isVisible ? 1.0 : 0.0
-        }, completion: { finished -> Void in
-            completion?()
-        })
+                       }, completion: { finished -> Void in
+                        completion?()
+                       })
     }
     
     private func performIndexChange(fromPreviousIndex previousIndex: Int,
@@ -372,9 +398,9 @@ import UIKit
                            animations: { () -> Void in
                             self.indicatorView.frame = self.normalSegmentViews[self.index].frame
                             self.layoutIfNeeded()
-            }, completion: { finished -> Void in
-                completion()
-            })
+                           }, completion: { finished -> Void in
+                            completion()
+                           })
         }
         
         if index == Self.noSegment {
