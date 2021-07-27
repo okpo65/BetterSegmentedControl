@@ -83,24 +83,24 @@ import UIKit
     
     /// The indicator view's border color.
     @IBInspectable public var indicatorViewBorderColor: UIColor? {
-//        get {
-//            guard let color = indicatorView.layer.borderColor else {
-//                return nil
-//            }
-//            return UIColor(cgColor: color)
-//        }
+        get {
+            guard let color = indicatorView.layer.borderColor else {
+                return nil
+            }
+            return UIColor(cgColor: color)
+        }
         set {
             indicatorView.layer.borderColor = newValue?.cgColor
         }
     }
     /// The background view's border color.
     @IBInspectable public var backgroundBorderColor: UIColor? {
-//        get {
-//            guard let color = normalSegmentViews.layer.borderColor else {
+        get {
+//            guard let color = normalSegmentViews[0].layer.borderColor else {
 //                return nil
 //            }
-//            return  //UIColor(cgColor: color)
-//        }
+            return UIColor.black.cgColor
+        }
         set {
             normalSegmentViews.forEach { $0.layer.borderColor = newValue?.cgColor }
         }
@@ -109,7 +109,8 @@ import UIKit
     /// The background view's border width.
     @IBInspectable public var backgroundBorderWidth: CGFloat {
         get {
-            return normalSegmentViews.layer.borderWidth
+//            return normalSegmentViews.layer.borderWidth
+            return 1
         }
         set {
             normalSegmentViews.forEach { $0.layer.borderWidth = newValue }
