@@ -124,7 +124,7 @@ import UIKit
     @IBInspectable public var animationSpringDamping: CGFloat = 0.75
     
     /// When the control auto-sizes itself, this controls the additional side padding between the segments.
-    @IBInspectable public var segmentPadding: CGFloat = 14.0 {
+    @IBInspectable public var segmentPadding: CGFloat = 0 {
         didSet {
             invalidateIntrinsicContentSize()
         }
@@ -474,8 +474,8 @@ import UIKit
     }
     
     private func frameForElement(atIndex index: Int) -> CGRect {
-        let elementWidth = (width - totalInsetSize) / CGFloat(normalSegmentViewCount)
-        let x = CGFloat(isLayoutDirectionRightToLeft ? lastIndex - index : index) * elementWidth
+        let elementWidth = (width - totalInsetSize) / CGFloat(normalSegmentViewCount) - segmentPadding
+        let x = CGFloat(isLayoutDirectionRightToLeft ? lastIndex - index : index) * (elementWidth + segmentPadding)
         
         return CGRect(x: x + indicatorViewInset,
                       y: indicatorViewInset,
