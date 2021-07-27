@@ -18,6 +18,10 @@ public extension BetterSegmentedControl {
         case indicatorViewBorderWidth(CGFloat)
         case indicatorViewBorderColor(UIColor)
         
+        /* normal border */
+        case backgroundBorderColor(UIColor)
+        case backgroundBorderWidth(CGFloat)
+        
         /* Behavior */
         case alwaysAnnouncesValue(Bool)
         case announcesValueImmediately(Bool)
