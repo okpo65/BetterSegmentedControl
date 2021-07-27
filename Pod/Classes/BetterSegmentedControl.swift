@@ -99,7 +99,7 @@ import UIKit
 //            guard let color = normalSegmentViews[0].layer.borderColor else {
 //                return nil
 //            }
-            return UIColor.black.cgColor
+            return UIColor.black
         }
         set {
             normalSegmentViews.forEach { $0.layer.borderColor = newValue?.cgColor }
