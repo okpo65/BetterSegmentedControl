@@ -83,24 +83,24 @@ import UIKit
     
     /// The indicator view's border color.
     @IBInspectable public var indicatorViewBorderColor: UIColor? {
-        get {
-            guard let color = indicatorView.layer.borderColor else {
-                return nil
-            }
-            return UIColor(cgColor: color)
-        }
+//        get {
+//            guard let color = indicatorView.layer.borderColor else {
+//                return nil
+//            }
+//            return UIColor(cgColor: color)
+//        }
         set {
             indicatorView.layer.borderColor = newValue?.cgColor
         }
     }
     /// The background view's border color.
     @IBInspectable public var backgroundBorderColor: UIColor? {
-        get {
-            guard let color = normalSegmentViews.layer.borderColor else {
-                return nil
-            }
-            return UIColor(cgColor: color)
-        }
+//        get {
+//            guard let color = normalSegmentViews.layer.borderColor else {
+//                return nil
+//            }
+//            return  //UIColor(cgColor: color)
+//        }
         set {
             normalSegmentViews.forEach { $0.layer.borderColor = newValue?.cgColor }
         }
